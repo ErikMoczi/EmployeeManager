@@ -1,0 +1,85 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">employee</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" data-bind="with: Employee">
+            <div class="form-group">
+                <label for="inputName" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputName" placeholder="Name" data-bind="value: Name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputSurname" class="col-sm-2 control-label">Surname</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputSurname" placeholder="Surname" data-bind="value: Surname" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress" class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Address" data-bind="value: Address">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputBirthDate" class="col-sm-2 control-label">BirthDate</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="inputBirthDate" placeholder="BirthDate" data-bind="value: BirthDateFormated">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEntryDate" class="col-sm-2 control-label">EntryDate</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="inputEntryDate" placeholder="EntryDate" data-bind="value: EntryDateFormated">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputSalary" class="col-sm-2 control-label">Salary</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputSalary" placeholder="Salary" data-bind="value: Salary">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Position</label>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <select type="text" class="form-control" id="inputSalary" placeholder="Salary" data-bind="options: $parent.Positions, optionsText: 'Name', value: NewPosition, optionsCaption: 'Choose position'" required></select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputFromDate" class="col-sm-2 control-label">From</label>
+                        <div class="col-sm-5">
+                            <input type="date" class="form-control" id="inputFromDate" placeholder="FromDate" data-bind="value: NewEmployeePosition().FromDateFormated">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputToDate" class="col-sm-2 control-label">To</label>
+                        <div class="col-sm-5">
+                            <input type="date" class="form-control" id="inputToDate" placeholder="ToDate" data-bind="value: NewEmployeePosition().ToDateFormated">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-warning btn-sm pull-left" data-bind="click: $parent.navEmployees">Cancel</button>
+                    <button type="submit" class="btn btn-success btn-sm pull-right" data-bind="visible: !($parent.AddOrDetail()), click: $parent.add">Add</button>
+                    <button type="submit" class="btn btn-success btn-sm pull-right" data-bind="visible: ($parent.AddOrDetail()), click: $parent.update">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer" data-bind="with: Employee">
+        <div data-bind="visible: EmployeePositions().length > 0">
+            <h3>List of positions</h3>
+            <ul class="list-group" data-bind="foreach: EmployeePositions">
+                <a class="list-group-item" data-bind="css: $parent.ActiveEmployeePosition().Id() === Id() ? 'active' : ''">
+                    <h4 class="list-group-item-heading" data-bind="text: Position().Name()"></h4>
+                    <p class="list-group-item-text" data-bind="text: FromDateFormated + ' to ' + ToDateFormated"></p>
+                </a>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "rootDir": "app/",
+        "module": "amd",
+        "sourceMap": true,
+        "target": "es5",
+        "allowJs": false,
+        "noImplicitAny": false,
+        "removeComments": true
+    },
+    "exclude": [
+        "node_modules",
+        "app/AllDurandal.ts"
+    ]
+}
